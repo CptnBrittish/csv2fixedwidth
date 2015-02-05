@@ -111,11 +111,16 @@ void * convert_to_fixed_width(char * csv){
 int main(int argc, char *argv[]){
   int opt;
   char path[PATH_MAX + 1];
-  
+
   if(argc < 2){
-    printf("No input\n");
-    return -1;
+    // If no options have been specified print help text
+      fprintf(stdout, "usage: fixedwidth2csv <options>\n");
+      fprintf(stdout, "-f <path to file to convert>\n");
+      fprintf(stdout, "-w <path of file to write to>\n");
+      fprintf(stdout, "If -w is not specified will output to stdout\n");
+      return -1;
   }
+  
   while((opt = getopt(argc, argv, "ocw:f:")) != -1) {
     switch(opt) {
     case 'c':
@@ -136,9 +141,7 @@ int main(int argc, char *argv[]){
       }
       
       break;
-    default:
-      fprintf(stdout, "No option found\n");
-      break;
+      
     }
   }
   // We should have a file to edit by now
