@@ -122,12 +122,10 @@ int main(int argc, char *argv[]){
       // We are converting to fixed width
       cfw = 1;
       break;
-    case 'o':
-      wf = 1;
-      break;
     case 'w':
       // path of file to write to
       realpath(optarg, fptowrt);
+      wf = 1;
       break;
     case 'f':
       //path of file to convert
@@ -160,7 +158,9 @@ int main(int argc, char *argv[]){
 
   char * fw = convert_to_fixed_width(array);
   if(wf){
-
+    FILE * file_to_write = fopen(fptowrt, "w+");
+    fputs(fw, file_to_write);
+    
   } else {
     fprintf(stdout, "%s", fw);
     fprintf(stdout, "\n"); // add a newline before exiting
