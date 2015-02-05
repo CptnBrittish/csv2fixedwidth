@@ -165,5 +165,6 @@ int main(int argc, char *argv[]){
     fprintf(stdout, "%s", fw);
     fprintf(stdout, "\n"); // add a newline before exiting
     }
+  free(fw);
   return 0;
 }
