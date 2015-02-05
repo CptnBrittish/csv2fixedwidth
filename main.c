@@ -141,10 +141,13 @@ int main(int argc, char *argv[]){
       }
       
       break;
-      
+      //getopt handles unknown options so there is no default case
     }
   }
-  // We should have a file to edit by now
+  // We should have a file to edit by now but we check anyway
+  if(file == NULL){
+    return -1;
+  }
 
   // We now want the file in a array so we can move back and forth through it
   struct stat sb;
